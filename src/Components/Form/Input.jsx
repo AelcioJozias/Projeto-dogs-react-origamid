@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Input.module.css';
+import { Error } from '../../../Helper/Error';
 
 export default function Input({
   label,
@@ -24,7 +25,7 @@ export default function Input({
         onChange={onChange}
         onBlur={onBlur}
       />
-      {error && <p className={style.error}>{error}</p>}
+      <Error error={error} />
     </div>
   );
 }
