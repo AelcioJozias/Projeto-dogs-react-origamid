@@ -3,27 +3,35 @@ import { Link } from 'react-router-dom';
 import Input from '../Form/Input';
 import Button from '../Form/Button';
 import useForm from '../../../Hooks/useForm';
+import { TOKEN_POST, USER_GET } from '../../../api';
 
 export default function LoginForm() {
   const username = useForm();
   const password = useForm();
 
-  function handleSubmit(event) {
+  useEffect(() => {
+    const token = localStorage.getItem('tokem');
+    if (token) {
+      getUser(to);
+    }
+  }, []);
+
+  const getUser = async (token) => {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = await response.json();
+  };
+  async function handleSubmit(event) {
     event.preventDefault();
-    fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(),
-    })
-      .then((response) => {
-        console.log('response', response);
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-      });
+    const { url, options } = TOKEN_POST({
+      username: username.value,
+      password: password.value,
+    });
+    const response = await fetch(url, options);
+    const json = await response.json();
+    const { token } = json;
+    localStorage.setItem('token', token);
+    getUser(token);
   }
 
   return (
