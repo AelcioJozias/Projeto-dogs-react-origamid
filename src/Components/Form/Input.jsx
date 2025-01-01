@@ -1,14 +1,30 @@
 import React from 'react';
 import style from './Input.module.css';
 
-export default function Input({ label, type, name }) {
+export default function Input({
+  label,
+  type,
+  name,
+  value,
+  onChange,
+  error,
+  onBlur,
+}) {
   return (
     <div className={style.wrapper}>
       <label htmlFor={name} className={style.label}>
         {label}
       </label>
-      <input id={name} name={name} type={type} className={style.input} />
-      <p className={style.error}>Error</p>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        className={style.input}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      {error && <p className={style.error}>{error}</p>}
     </div>
   );
 }
