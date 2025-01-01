@@ -8,7 +8,7 @@ import { UserContext } from '../../../UserContext';
 export default function LoginForm() {
   const username = useForm();
   const password = useForm();
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, error, loading } = useContext(UserContext);
   useEffect(() => {
     const token = localStorage.getItem('tokem');
     if (token) {
@@ -28,7 +28,13 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
-        <Button>Entrar</Button>
+        {loading ? (
+          <Button disabled={loading}>Carregando</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+
+        {error && <p>{error}</p>}
       </form>
       <Link to="/login/criar">Cadastro</Link>
     </section>

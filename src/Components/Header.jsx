@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import Dogs from '../Assets/dogs.svg?react';
 import { UserContext } from '../../UserContext';
 export default function Header() {
-  const { data } = useContext(UserContext);
-  console.log(data);
-
+  const { data, userLogout } = useContext(UserContext);
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
@@ -22,6 +20,7 @@ export default function Header() {
             Login / Criar
           </Link>
         )}
+        <button onClick={userLogout}>Sair</button>
       </nav>
     </header>
   );
