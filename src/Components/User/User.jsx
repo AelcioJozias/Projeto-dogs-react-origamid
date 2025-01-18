@@ -5,6 +5,7 @@ import Feed from '../Feed/Feed';
 import UserPhotoPost from './UserPhotoPost';
 import UserStats from './UserStats';
 
+// Aqui é rota de conta, que está definida em App.jsx
 const User = () => {
   return (
     <section className="container">

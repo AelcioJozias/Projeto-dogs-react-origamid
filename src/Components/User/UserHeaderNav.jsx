@@ -10,47 +10,50 @@ import useMedia from '../../../Hooks/useMedia';
 
 const UserHeaderNav = () => {
   const { userLogout } = useContext(UserContext);
-  const isMobileScreen = useMedia('(max-width: 40rem)');
-  const [showMobileMenu, setMobileMenu] = useState(false);
+  const isUserOnMobileScreen = useMedia('(max-width: 40rem)');
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const { pathname } = useLocation();
 
   useEffect(() => {
-    setMobileMenu(false);
+    function closeMenuOnChooseAnOption() {
+      setShowMobileMenu(false);
+    }
+    closeMenuOnChooseAnOption();
   }, [pathname]);
 
   return (
     <>
-      {isMobileScreen && (
+      {isUserOnMobileScreen && (
         <button
           className={`${styles.mobileButton} ${
             showMobileMenu && styles.mobileButtonActive
           }`}
           aria-label="Menu"
-          onClick={() => setMobileMenu(!showMobileMenu)}
-        ></button>
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+        />
       )}
       <nav
-        className={`${isMobileScreen ? styles.mobileNav : styles.nav} ${
+        className={`${isUserOnMobileScreen ? styles.mobileNav : styles.nav} ${
           showMobileMenu ? styles.mobileButtonActive : styles.nav
         }`}
       >
         <NavLink to="/conta" end>
           {' '}
           <Feed />
-          {isMobileScreen && 'Minhas fotos'}
+          {isUserOnMobileScreen && 'Minhas fotos'}
         </NavLink>
         <NavLink to="/conta/estatisticas">
           <Stats />
-          {isMobileScreen && 'Estatísticas'}
+          {isUserOnMobileScreen && 'Estatísticas'}
         </NavLink>
         <NavLink to="/conta/postar">
           <AddPhoto />
-          {isMobileScreen && 'Adicionar foto'}
+          {isUserOnMobileScreen && 'Adicionar foto'}
         </NavLink>
         <button onClick={userLogout}>
           <GoOut />
-          {isMobileScreen && 'Sair'}
+          {isUserOnMobileScreen && 'Sair'}
         </button>
       </nav>
     </>
