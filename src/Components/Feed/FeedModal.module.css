@@ -1,0 +1,24 @@
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, .4);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  /* Esse calc tá sendo pra deixar o padding do lado direito um pouco maior, 
+  pois por algum motivo ele conta a barra de scroll como parte do paddin
+  pode ser por causa da unidade de medida usada para fazer o tamanho do width */
+  padding: 2rem calc(4rem + 15px) 2rem 4rem;
+}
+
+@media(max-width: 40rem) {
+  .modal {
+    /* Esse calc tá sendo pra deixar o padding do lado direito um pouco maior, 
+    pois por algum motivo ele conta a barra de scroll como parte do paddin
+    pode ser por causa da unidade de medida usada para fazer o tamanho do width */
+    padding: 2rem calc(2rem + 15px) 2rem 2rem;
+  }
+}
