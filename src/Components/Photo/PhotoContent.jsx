@@ -23,12 +23,12 @@ const PhotoContent = ({ data }) => {
             <li>{photo.idade}anos</li>
           </ul>
         </div>
-        <PhotoComments
-          className={styles.comments}
-          id={photo.id}
-          comments={comments}
-        />
       </div>
+      <PhotoComments
+        className={styles.comments}
+        id={photo.id}
+        comments={comments}
+      />
     </div>
   );
 };
