@@ -51,11 +51,6 @@
   animation: yap .6s infinite;
 }
 
-.button:disabled {
-  opacity: 0.5;
-  cursor: wait;
-}
-
 @keyframes yap {
   from {
     opacity: 0;

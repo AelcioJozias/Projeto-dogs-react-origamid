@@ -38,6 +38,11 @@ button, input {
   color: #333
 }
 
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
 a {
   text-decoration: none;
   color: #333;
