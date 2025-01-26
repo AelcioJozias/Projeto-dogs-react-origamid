@@ -4,6 +4,7 @@ import PhotoComments from './PhotoComments';
 import styles from './PhotoContent.module.css';
 import userContext from "../../../UserContext.jsx";
 import PhotoDelete from "./PhotoDelete.jsx";
+import Image from "../../../Helper/Image.jsx";
 
 const PhotoContent = ({data}) => {
   const user = useContext(userContext)
