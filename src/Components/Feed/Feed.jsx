@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import FeedModal from './FeedModal';
 import FeedPhotos from './FeedPhotos';
+import PropTypes, { number, string } from 'prop-types';
 
-const Feed = ({ user }) => {
+const Feed = ({ user = 0 }) => {
   const [modalPhoto, setModalPhoto] = useState(null);
   const [pages, setPages] = useState([1]);
   const [isToContinueFetchImages, setIsToContinueFetchImages] = useState(true);
@@ -71,6 +72,13 @@ const Feed = ({ user }) => {
       ))}
     </div>
   );
+};
+
+Feed.prototype = {
+  user: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]).isRequired,
 };
 
 export default Feed;
