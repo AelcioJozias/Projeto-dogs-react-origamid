@@ -92,6 +92,7 @@
   .photo {
     height: auto;
     max-height: calc(100vh - 4rem);
-    grid-template-columns: minmax(20rem, 20rem);
+    grid-template-columns: minmax(20rem, 40rem);
   }
+
 }
