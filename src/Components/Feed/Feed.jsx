@@ -7,6 +7,20 @@ const Feed = ({ user }) => {
   const [pages, setPages] = useState([1]);
   const [isToContinueFetchImages, setIsToContinueFetchImages] = useState(true);
 
+  useEffect(() => {
+    function disableScroll() {
+      if (modalPhoto) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+    }
+    disableScroll();
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [modalPhoto]);
+
   // all this code on useEffect is to make the infinte scroll
   useEffect(() => {
     let cantMakeRequest = false;
