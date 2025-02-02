@@ -6,6 +6,7 @@ import UserPhotoPost from './UserPhotoPost';
 import UserStats from './UserStats';
 import UserContext from '../../../UserContext.jsx';
 import NotFound from '../NotFound.jsx';
+import Head from '../../../Helper/Head.jsx';
 
 // Aqui é rota de conta, que está definida em App.jsx
 const User = () => {
@@ -13,6 +14,7 @@ const User = () => {
 
   return (
     <section className="container">
+      <Head title="Minha conta" />
       <UserHeader />
       <Routes>
         <Route path="/" element={<Feed user={data.id} />} />
