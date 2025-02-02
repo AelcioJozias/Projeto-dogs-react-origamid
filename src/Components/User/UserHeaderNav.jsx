@@ -43,10 +43,11 @@ const UserHeaderNav = () => {
           <Feed />
           {isUserOnMobileScreen && 'Minhas fotos'}
         </NavLink>
+        {/* TO-DO implementar o componente de estatísticas
         <NavLink to="/conta/estatisticas">
           <Stats />
           {isUserOnMobileScreen && 'Estatísticas'}
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/conta/postar">
           <AddPhoto />
           {isUserOnMobileScreen && 'Adicionar foto'}
