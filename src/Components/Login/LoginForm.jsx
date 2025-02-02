@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../Form/Input';
 import Button from '../Form/Button';
@@ -11,12 +11,6 @@ export default function LoginForm() {
   const username = useForm();
   const password = useForm();
   const { userLogin, error, loading } = useContext(UserContext);
-  useEffect(() => {
-    const token = localStorage.getItem('tokem');
-    if (token) {
-      getUser(to);
-    }
-  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -37,7 +31,7 @@ export default function LoginForm() {
         )}
         <Error error={error} />
       </form>
-      <Link className={styles.lost} to="/login/criar">
+      <Link className={styles.lost} to="/login/perdeu">
         Perdeu a senha?
       </Link>
       <div className={styles.register}>
